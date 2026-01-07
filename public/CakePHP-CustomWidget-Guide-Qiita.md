@@ -4,7 +4,7 @@ tags:
   - PHP
   - CakePHP
 private: false
-updated_at: '2026-01-07T14:58:08+09:00'
+updated_at: '2026-01-07T15:05:46+09:00'
 id: 587d2ff07c9b4c9a34b6
 organization_url_name: null
 slide: false
