@@ -3,11 +3,11 @@ title: 【CakePHP 4.x】カスタムウィジェットの作り方
 tags:
   - PHP
   - CakePHP
-  - Widget
-  - Form
+  - form
+  - widget
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-01-07T14:58:08+09:00'
+id: 587d2ff07c9b4c9a34b6
 organization_url_name: null
 slide: false
 ignorePublish: false
