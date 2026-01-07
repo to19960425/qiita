@@ -3,8 +3,11 @@ title: 【CakePHP 4.x】カスタムウィジェットの作り方
 tags:
   - PHP
   - CakePHP
+<<<<<<< Updated upstream
   - form
   - widget
+=======
+>>>>>>> Stashed changes
 private: false
 updated_at: '2026-01-07T14:58:08+09:00'
 id: 587d2ff07c9b4c9a34b6
@@ -15,6 +18,7 @@ ignorePublish: false
 
 # CakePHP 4.x カスタムウィジェット作成ガイド
 
+忘れないための備忘録。
 フォームの入力要素をカスタマイズする**ウィジェット**の作成方法を、パスワード表示切替ウィジェットを例に解説します。
 
 ## ファイル構成
@@ -133,12 +137,12 @@ echo $this->Form->control('password', [
 
 ## ポイント整理
 
-| 項目 | 説明 |
-|------|------|
-| `val` → `value` | CakePHP内部キーをHTML属性に変換 |
-| `formatAttributes()` | 配列をHTML属性文字列に変換（第2引数で除外指定可） |
-| `secureFields()` | CSRF保護対象フィールドを返す（必須メソッド） |
-| テンプレート | `app_form.php`で定義、`format()`の第1引数名で紐づく |
+| 項目                 | 説明                                                |
+| -------------------- | --------------------------------------------------- |
+| `val` → `value`      | CakePHP内部キーをHTML属性に変換                     |
+| `formatAttributes()` | 配列をHTML属性文字列に変換（第2引数で除外指定可）   |
+| `secureFields()`     | CSRF保護対象フィールドを返す（必須メソッド）        |
+| テンプレート         | `app_form.php`で定義、`format()`の第1引数名で紐づく |
 
 ## 参考
 
