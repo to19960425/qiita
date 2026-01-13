@@ -5,8 +5,8 @@ tags:
   - WordPress
   - WooCommerce
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-01-13T09:34:45+09:00'
+id: 5eb51a5c1a373da1a5dd
 organization_url_name: null
 slide: false
 ignorePublish: false
