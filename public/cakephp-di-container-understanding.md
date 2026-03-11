@@ -35,7 +35,7 @@ class SomeController
 
 これでも動くし、DIコンテナが自動的にインスタンスを作って渡してくれるので、「DI使えてるな」と思っていた。
 
-ただ、これは **DIコンテナの「自動インスタンス化」機能を使っていただけ** で、DIの本来の旨味である **「インターフェース解決」** は全く活用できていなかった。
+ただ、これは **DIコンテナの「自動インスタンス化」機能を使っていただけ** で、DIコンテナと組み合わせることでより力を発揮する **「インターフェースを介した依存の抽象化」** は全く活用できていなかった。
 
 ---
 
@@ -54,7 +54,7 @@ public function services(ContainerInterface $container): void
     // Domain Service
     $container->add(CouponMergeService::class);
 
-    // UseCase（複雑な依存関係を持つクラス）
+    // UseCase（依存するインターフェースを明示的に指定）
     $container
         ->add(GetDashboardDataUseCase::class)
         ->addArgument(CouponRepositoryInterface::class)
@@ -76,24 +76,27 @@ public function services(ContainerInterface $container): void
 - `add` → **何を作るかの登録**
 - `addArgument` → **作るときに何を渡すかの指定**
 
+`addArgument` でインターフェースを渡すと、コンテナは先に `add` で登録されたバインディングを参照して実装クラスを解決してくれる。つまり `addArgument(CouponRepositoryInterface::class)` と書けば、コンテナが `CakeCouponRepository` のインスタンスを作って渡してくれる。
+
 ---
 
-## コントローラー側はインターフェースを書くだけ
+## 利用する側はインターフェースを書くだけ
 
-バインディングを設定すれば、コントローラーは **インターフェースを型ヒントに書くだけ** で、具体的な実装クラスを知る必要がなくなる。
+バインディングを設定すれば、利用する側は **インターフェースを型ヒントに書くだけ** で、具体的な実装クラスを知る必要がなくなる。
 
 ```php
-// コントローラーは CakeCouponRepository を知らなくていい
-class SomeController extends AppController
+// UseCaseは CakeCouponRepository や HttpExternalCouponApi を知らなくていい
+class GetDashboardDataUseCase
 {
     public function __construct(
-        private CouponRepositoryInterface $couponRepository
+        private CouponRepositoryInterface $couponRepository,
+        private ExternalCouponApiInterface $externalApi
     ) {}
 }
 ```
 
 ```
-コントローラーが CouponRepositoryInterface を要求
+GetDashboardDataUseCase が CouponRepositoryInterface を要求
         ↓
 DIコンテナが「CakeCouponRepository を使えばいいな」と判断
         ↓
@@ -111,10 +114,10 @@ CakeCouponRepository のインスタンスを自動生成して注入
 | 自動インスタンス化 | ✅ | ✅ |
 | インターフェース定義 | ❌ | ✅ |
 | バインディング設定 | ❌ | ✅ |
-| モックへの差し替え | ❌ | ✅ |
+| テスト時の差し替え | △（手動で渡せば可能） | ✅（コンテナで一括管理） |
 | Clean Architecture | ❌ | ✅ |
 
-EC-CUBE案件で `services.yaml` にサービスを登録してコントローラで使う、ということはやっていたが、インターフェースを定義してバインディングするところまではやっていなかった。「DIっぽく使っていただけで、DIの本来の旨味は使えていなかった」ということになる。
+EC-CUBE案件でサービスクラスをコントローラで使う、ということはやっていたが、インターフェースを定義してバインディングするところまではやっていなかった。「DIっぽく使っていただけで、DIコンテナの力を引き出せていなかった」ということになる。
 
 ---
 
