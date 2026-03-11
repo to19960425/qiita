@@ -3,12 +3,12 @@ title: 【CakePHP5】DDDリファクタリングで気づいた「DIコンテナ
 tags:
   - PHP
   - CakePHP
-  - DI
   - DDD
   - 設計
+  - DI
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-03-11T10:27:30+09:00'
+id: cbcc15b0f00c1b9f6b46
 organization_url_name: null
 slide: false
 ignorePublish: false
