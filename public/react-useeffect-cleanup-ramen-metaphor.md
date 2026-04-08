@@ -1,14 +1,14 @@
 ---
 title: 【React】useEffect のクリーンアップを「ラーメン屋の注文」でたとえてみる
 tags:
-  - React
   - JavaScript
   - TypeScript
-  - useEffect
   - フロントエンド
+  - React
+  - useEffect
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-04-08T13:04:07+09:00'
+id: 4555634ed63820192f5e
 organization_url_name: null
 slide: false
 ignorePublish: false
