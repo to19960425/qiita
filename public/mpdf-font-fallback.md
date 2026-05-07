@@ -3,12 +3,12 @@ title: 【mPDF】useSubstitutions でフォント未収録の文字をフォー�
 tags:
   - PHP
   - PDF
-  - mPDF
-  - フォント
+  - font
   - 文字化け
+  - mpdf
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-05-07T17:58:22+09:00'
+id: 062010225152db5b29bd
 organization_url_name: null
 slide: false
 ignorePublish: false
